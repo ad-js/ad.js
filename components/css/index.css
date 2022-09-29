@@ -1,0 +1,213 @@
+body {
+  overflow: hidden;
+}
+.el-container {
+  background-color: #E9EEF3;
+  height: 100vh;
+  overflow: hidden;
+}
+.el-header,
+.el-footer {
+  background-color: #B3C0D1;
+  color: #333;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+.el-main {
+  background-color: #E9EEF3;
+  color: #333;
+  text-align: center;
+  position: relative;
+  width: 70%;
+  margin: auto;
+  margin-top: 10vh;
+  display: flex;
+  justify-content: space-between;
+}
+.el-main .top {
+  margin-top: 3vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.el-main .top .l {
+  width: 47%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.el-main .top .l .el-select {
+  width: 25%;
+}
+.el-main .top .l .tit {
+  color: grey;
+}
+.el-main .top .r {
+  display: flex;
+  align-items: center;
+}
+.el-main .top .r i {
+  margin-right: 15px;
+  font-size: 25px;
+}
+.el-main .text {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3vh;
+}
+.el-main .text .textFrom,
+.el-main .text .textTo {
+  width: 47%;
+}
+.el-main .text .textFrom .el-textarea textarea,
+.el-main .text .textTo .el-textarea textarea {
+  height: 100px;
+}
+.el-main .text .textFrom i,
+.el-main .text .textTo i {
+  float: left;
+  margin: 1vh;
+}
+.el-main .history {
+  width: 47%!important;
+  float: left;
+  margin-top: 1vh;
+}
+.el-main .history .hisTop {
+  display: flex;
+  justify-content: space-between;
+  margin: 1vh 0;
+}
+.el-main .history .buttonD {
+  border: none;
+  background: none;
+}
+.el-main .history .buttonD button {
+  border: 0px;
+}
+.el-main .favorites {
+  overflow: hidden;
+  overflow-y: hidden;
+  width: 47%!important;
+  float: right;
+  margin-top: 1vh;
+}
+.el-main .favorites .hisTop {
+  display: flex;
+  justify-content: space-between;
+  margin: 1vh 0;
+}
+.el-main .favorites .buttonD {
+  border: none;
+  background: none;
+}
+.el-main .favorites .buttonD button {
+  border: 0px;
+}
+body > .el-container {
+  margin-bottom: 40px;
+}
+.el-container:nth-child(5) .el-aside,
+.el-container:nth-child(6) .el-aside {
+  line-height: 260px;
+}
+.el-container:nth-child(7) .el-aside {
+  line-height: 320px;
+}
+@media screen and (max-width: 1500px) {
+  .el-main {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 750px) {
+  .el-header,
+  .el-footer {
+    background-color: #B3C0D1;
+    color: #333;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+  }
+  .el-header i,
+  .el-footer i {
+    margin-left: 10px;
+  }
+  .titleIcon {
+    color: gray;
+  }
+  .el-main {
+    background-color: #E9EEF3;
+    color: #333;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    margin: auto!important;
+  }
+  .el-main .top {
+    margin-top: 3vh;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .el-main .top .l {
+    z-index: 999;
+    width: 100%;
+  }
+  .el-main .top .l .el-select {
+    width: 100%;
+  }
+  .el-main .top .l .el-button {
+    margin-left: 10px;
+    float: right;
+  }
+  .el-main .top .r {
+    float: right;
+    width: 100%;
+    margin-top: -120px;
+    display: none;
+  }
+  .el-main .top .r i {
+    color: gray;
+  }
+  .el-main .text {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 3vh;
+  }
+  .el-main .text .textFrom,
+  .el-main .text .textTo {
+    width: 100%;
+  }
+  .el-main .text .textFrom .el-textarea textarea,
+  .el-main .text .textTo .el-textarea textarea {
+    height: 100px;
+  }
+  .el-main .text .textFrom i,
+  .el-main .text .textTo i {
+    float: left;
+    margin: 1vh;
+  }
+  .el-main .history {
+    width: 100%!important;
+    margin-top: 1vh;
+  }
+  .el-main .history .hisTop {
+    display: flex;
+    justify-content: space-between;
+    margin: 1vh 0;
+  }
+  .el-main .history .buttonD {
+    border: none;
+    background: none;
+  }
+  .el-main .favorites {
+    width: 100%!important;
+  }
+}
+.el-table td,
+.el-table th.is-leaf {
+  border-bottom: 1px solid rgba(0, 0, 0, 0) !important;
+}

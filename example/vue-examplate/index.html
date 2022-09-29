@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>自然语言翻译翻译</title>
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f934a6ddc813170aa6ed18e6b5ade85d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/crypto-js/4.0.0/crypto-js.js"></script>
+  <script src="./js/cookie.js"></script>
+  <link rel="stylesheet" href="./css/index.css">
+  <script src="./js/vue.js"></script>
+  <script src="./js/axios.min.js"></script>
+  <!-- 引入样式 -->
+  <!-- <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"> -->
+  <!-- 引入组件库 -->
+  <!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+  <link rel="stylesheet" href="./css/element.css">
+  <script src="./js/element.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <template>
+      <el-container>
+        <div v-if="!isPhone" id="ad-banner1" style="background-color: red;float: right; width:100%;height:100px;"></div>
+        <div v-if="isPhone" id="ad-banner1" style="background-color: red;float: right; width:100vw;height:10vw;"></div>
+        <el-header>
+          <h1>自然语言翻译翻译</h1>
+          <div class="titleIcon" v-if="isPhone">
+            <i class="el-icon-s-unfold"></i>
+            <i class="el-icon-s-tools"></i>
+          </div>
+        </el-header>
+        <el-main>
+          <div class="top">
+            <div class="l">
+              <div class="tit" v-if="isPhone">from</div>
+              <el-select v-model="selectValue1" :placeholder="tableList.list1">
+                <el-option v-for="item in selectOptions1" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+              </el-select>
+              <div class="tit" v-if="isPhone">to</div>
+              <el-select v-model="selectValue2" :placeholder="tableList.list5">
+                <el-option v-for="item in selectOptions2" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+              </el-select>
+              <el-button type="primary" @click="youDao">翻译</el-button>
+              <el-button v-if="!isPhone" @click="youDao">人工翻译</el-button>
+            </div>
+            <div class="r">
+              <i class="el-icon-s-unfold"></i>
+              <i class="el-icon-s-tools"></i>
+            </div>
+          </div>
+          <div class="text">
+            <div class="textFrom">
+              <el-input type="textarea" :rows="2" placeholder="原文" v-model="textareaFrom">
+              </el-input>
+              <i class="el-icon-star-off" title="收藏" @click="addFavorites()"></i>
+            </div>
+            <div class="textTo">
+              <el-input type="textarea" :rows="2" placeholder="译文" v-model="textareaTo">
+              </el-input>
+              <i class="el-icon-copy-document" title="复制译文" @click="copy()"></i>
+            </div>
+          </div>
+          <div class="history">
+            <div class="hisTop">
+              <div>
+                <i class="el-icon-time"></i><span> 历史记录</span>
+              </div>
+              <div>
+                <i class="el-icon-delete" @click="del(0,'all','h')" title="删除全部记录"></i>
+              </div>
+            </div>
+            <el-table :data="history">
+              <el-table-column prop="originalText" width="100" :label="tableList.list1">
+              </el-table-column>
+              <el-table-column prop="translation" :label="tableList.list2">
+              </el-table-column>
+              <el-table-column prop="time" width="80" v-if="!isPhone" :label="tableList.list3">
+              </el-table-column>
+              <el-table-column width="120" :label="tableList.list4">
+                <template slot-scope="scope">
+                  <div class="buttonD">
+                    <el-button v-if="history[scope.$index].isFav " type="success" icon="el-icon-check"
+                      @click="add(scope.$index,'1','h',scope,false)" :title="scope" circle>
+                    </el-button>
+                    <el-button v-if="!history[scope.$index].isFav " type="primary" icon="el-icon-star-off"
+                      @click="add(scope.$index,'1','h',scope,true)" title="收藏" circle>
+                    </el-button>
+                    <el-button type="danger" icon="el-icon-close" @click="del(scope.$index,'1','h')" title="删除此条记录"
+                      circle>
+                    </el-button>
+                  </div>
+                </template>
+              </el-table-column>
+            </el-table>
+
+          </div>
+          <div class="favorites">
+            <div class="hisTop">
+              <div>
+                <i class="el-icon-time"></i>
+                <span> 收藏夹</span>
+              </div>
+              <div>
+                <i class="el-icon-delete" @click="del(0,'all','f')" title="删除全部收藏"></i>
+              </div>
+            </div>
+            <el-table :data="favorites">
+              <el-table-column prop="originalText" width="100" :label="tableList2.list1">
+              </el-table-column>
+              <el-table-column prop="translation" :label="tableList2.list2">
+              </el-table-column>
+              <el-table-column prop="time" width="80" v-if="!isPhone" :label="tableList2.list3">
+              </el-table-column>
+              <el-table-column width="80" :label="tableList2.list4">
+                <template slot-scope="scope">
+                  <div class="buttonD">
+                    <el-button type="danger" icon="el-icon-close" @click="del(scope.$index,'1','f')" title="删除此条收藏"
+                      circle></el-button>
+                  </div>
+                </template>
+              </el-table-column>
+            </el-table>
+          </div>
+        </el-main>
+        <div v-if="!isPhone" id="ad-banner2" style="background-color: red;float: right; width:100%;height:100px;"></div>
+        <div v-if="isPhone" id="ad-banner2" style="background-color: red;float: right; width:100vw;height:10vw;"></div>
+      </el-container>
+    </template>
+
+  </div>
+
+  <script src="./js/index.js"></script>
+</body>
+<script src="../../ad-core/index.js"></script>
+<script>
+  const ad1 = new BannerAD('#ad-banner1', {
+    appkey: 'app1',
+  });
+  const ad2 = new BannerAD('#ad-banner2', {
+    appkey: 'app1',
+  });
+</script>
+
+</html>
