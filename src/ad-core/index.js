@@ -1,3 +1,3 @@
-import AD from './components/AD';
-import BannerAD from './components/BannerAD';
-export default { BannerAD };
+import BannerAD from './components/BannerAD.js';
+import CoupletAD from './components/CoupletAD.js';
+export default { BannerAD, CoupletAD };

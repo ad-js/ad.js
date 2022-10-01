@@ -1,5 +1,5 @@
-import EVENT_LIST from '../event';
-import { applist } from '../mock';
+import EVENT_LIST from '../event.js';
+import { applist } from '../mock.js';
 // 广告类
 export default class AD {
   constructor(el, option) {

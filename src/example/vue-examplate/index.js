@@ -1,3 +1,4 @@
-import AD from '../../../dist/ad.js';
+import AD from '../../ad-core/index.js';
+export default AD;
 
 console.log(AD);

@@ -35,6 +35,9 @@
       <el-container>
         <div v-if="!isPhone" id="ad-banner1" style="background-color: red;float: right; width:100%;height:100px;"></div>
         <div v-if="isPhone" id="ad-banner1" style="background-color: red;float: right; width:100vw;height:10vw;"></div>
+        <!-- 对联广告 -->
+        <div id="ad-couplet1" class="couplet_1" style="background-color: blue;position: fixed;left: 0;z-index: 114514;bottom: 150px;width: 10%;height: 30%;max-width: 150px;min-height: 120px;"></div>
+        <div id="ad-couplet2" class="couplet_2" style="background-color: blue;position: fixed;right: 0;z-index: 114514;bottom: 150px;width: 10%;height: 30%;max-width: 150px;min-height: 120px;"></div>
         <el-header>
           <h1>自然语言翻译翻译</h1>
           <div class="titleIcon" v-if="isPhone">
@@ -146,16 +149,21 @@
 
   <script src="./js/index.js"></script>
 </body>
-<script src="../../../dist/ad.js">
-</script>
-<script>
-  // import { AD } from "../../../dist/ad.js"
+
+<script type="module">
+  import  AD  from './index.js';
   const ad1 = new AD.BannerAD('#ad-banner1', {
     appkey: 'app1',
   });
   const ad2 = new AD.BannerAD('#ad-banner2', {
     appkey: 'app1',
   });
+  const ad3 = new AD.CoupletAD('#ad-couplet1', {
+      appkey: 'app1',
+  })
+  const ad4 = new AD.CoupletAD('#ad-couplet2', {
+      appkey: 'app1',
+  })
 </script>
 
 </html>

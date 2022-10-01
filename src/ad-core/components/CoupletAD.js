@@ -1,10 +1,10 @@
 import AD from './AD.js';
 // 实例化 指定广告类型
-export default class BannerAD extends AD {
+export default class CoupletAD extends AD {
   constructor(el, option) {
     super(el, {
       ...option,
-      type: 'BannerAD',
+      type: 'CoupletAD',
       style: 'width:100%;height:100%;background:green;',
     });
     this.$container.appendChild(this.$el);
