@@ -1,20 +1,21 @@
 import AD from './AD';
 // 实例化 指定广告类型
 export default class BannerAD extends AD {
-  constructor(el: any, option: any) {
+  constructor(el: any, options: any) {
     super(el, {
-      ...option,
+      ...options,
       adtype: 'BannerAD',
-      style: 'width:100%;height:100%;background:green;',
+      style: 'width:100%;height:100%;',
       name: 'ldq',
     });
-    this.$container.appendChild(this.$el);
-    this.initAD(this.$el, this.$resource);
+    this.initAD(this.$DOM.$ad, this.$resource);
+    this.appendChild(this.$DOM.$container, this.$DOM.$ad)
   }
   // 初始化广告内容
-  // 根据内容自定义显示类型
-  initAD($el: any, $resource: any) {
-    this.$el.style.backgroundImage = `url(${$resource.image})`;
-    this.$el.style.backgroundSize = `100% 100%`;
+  initAD($ad: any, $resource: any) {
+    console.log(this.$DOM);
+
+    this.$DOM.$ad.style.backgroundImage = `url(${$resource.image})`;
+    this.$DOM.$ad.style.backgroundSize = `100% 100%`;
   }
 }

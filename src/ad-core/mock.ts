@@ -22,25 +22,6 @@ export const applist: any = [
         // 触发次数
         eventTime: 20,
       },
-      {
-        // 类型
-        type: 'ButtonAD',
-        // 链接
-        url: 'https://www.qq.com',
-        // 表现形式
-        showType: 'video' as any | 'image' as any,
-        // 图片
-        image:
-          'https://img-operation.csdnimg.cn/csdn/silkroad/img/1662634720055.png',
-        // 触发事件
-        event: 'click',
-        // 计费
-        money: 10,
-        // 单价
-        price: 0.5,
-        // 触发次数
-        eventTime: 20,
-      },
     ],
     // app 总计费
     money: 100,
