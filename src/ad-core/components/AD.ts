@@ -3,7 +3,7 @@ import { applist } from '../mock';
 import BASE_CORE from './core';
 // 广告类
 export default class AD extends BASE_CORE {
-  constructor(container, option) {
+  constructor(container: any, option: any) {
     super(container, option);
     // console.log(container, option);
     this.$options = option;
@@ -23,10 +23,10 @@ export default class AD extends BASE_CORE {
     this.initRenderEvent();
   }
   // 模拟请求
-  fetchObj({ appkey, adtype }) {
+  fetchObj({ appkey, adtype }: any) {
     return applist
-      .find(f => f.appkey == appkey)
-      .AD_value.find(f => f.type == adtype);
+      .find((f: any) => f.appkey == appkey)
+      .AD_value.find((f: any) => f.type == adtype);
   }
   // 监听渲染事件
   initRenderEvent() {
@@ -39,20 +39,20 @@ export default class AD extends BASE_CORE {
     });
   }
   // 初始化事件
-  initEvent(el, options) {
+  initEvent(el: any, options: any) {
     // console.log(el);
-    el.addEventListener(options.event, EVENT_LIST[options.event](options));
+    el.addEventListener(options.event, (EVENT_LIST as any)[options.event](options));
   }
   // 初始化style
-  initStyle(dom, styles = this.$options.style) {
+  initStyle(dom: any, styles = this.$options.style) {
     // console.log(styles);
     dom.style = styles;
   }
   // 初始化广告内容
-  initAD($el, $resource, type) {}
+  initAD($el: any, $resource: any, type: any) { }
   // 删除
   initDel() {
-    const delbox = document.createElement('div');
+    const delbox: any = document.createElement('div');
     delbox.id = 'ad-close-icon';
     delbox.style =
       'position:absolute; display: block;width: 15px;height: 2px;background: #333;transform: rotate(45deg);margin-top:20px;';
@@ -72,9 +72,9 @@ export default class AD extends BASE_CORE {
       'width:20px;height:30px;position:absolute;margin-left:15px;right:15px;';
     this.$delIcon.appendChild(delbox);
     this.$container.appendChild(this.$delIcon);
-    this.$delIcon.addEventListener('click', e => this.del(e));
+    this.$delIcon.addEventListener('click', (e: any) => this.del(e));
   }
-  del(e) {
+  del(e: any) {
     e.stopPropagation();
     // console.log(this, this.$container);
     this.$container.remove();
