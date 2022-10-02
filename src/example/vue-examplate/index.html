@@ -149,13 +149,11 @@
 <script src="../../../dist/ad.js">
 </script>
 <script>
-  // import { AD } from "../../../dist/ad.js"
-  const ad1 = new AD.BannerAD('#ad-banner1', {
-    appkey: 'app1',
-  });
-  const ad2 = new AD.BannerAD('#ad-banner2', {
-    appkey: 'app1',
-  });
+  const banner1 = document.getElementById('ad-banner1')
+  // const banner2 = document.getElementById('ad-banner2')
+  const appkey = 'app1'
+  new AD.BannerAD(banner1, { appkey });
+  // new AD.BannerAD(banner2, { appkey });
 </script>
 
 </html>

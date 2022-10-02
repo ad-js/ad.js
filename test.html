@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>删除小图标</title>
+
+
+</head>
+
+<body>
+  <div id="content">66666</div>
+  <script>
+    // html
+    // js
+    let time = 4;
+    let arr = new Array(time);
+    let content = document.getElementById('content');
+    let mutationObserver = new MutationObserver(obsCallback); // 创建实例
+    obs(); // 绑定被观察者
+    obstruct(); // 执行阻塞
+
+    // 完成创建
+    function obsCallback(mutations, observer) {
+      console.log(`创建完成!`);
+      console.log(observer); // 观察者实例
+      console.log(mutations); // 变动数组
+    }
+
+    function obs() {
+      mutationObserver.observe(content, {
+        childList: true,
+        subtree: true,
+      });
+    }
+
+    function obstruct() {
+      for (let i = 0; i < arr.length; i++) {
+        arr[i] = `<div>${i}</div>`;
+      }
+
+      arr.map((item, idx) => {
+        for (let i = 0; i < 3000; i++) console.log(1)
+        content.innerHTML += item;
+      });
+    }
+  </script>
+</body>
+
+</html>

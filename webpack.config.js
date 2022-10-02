@@ -4,12 +4,17 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
+  // 模式
+  mode: 'none',
+  resolve: {
+    extensions: ['.ts', '.js'], //新增
+  },
   // 入口
   entry: {
     // 不压缩版本
-    ad: './src/ad-core/index.js',
+    ad: './src/ad-core/index.ts',
     // 压缩版本
-    'ad.min': './src/ad-core/index.js',
+    'ad.min': './src/ad-core/index.ts',
   },
   // 输出
   output: {
@@ -22,8 +27,6 @@ module.exports = {
     libraryTarget: 'umd',
     libraryExport: 'default',
   },
-  // 模式
-  mode: 'none',
   // 优化
   optimization: {
     // 是否压缩
@@ -36,24 +39,12 @@ module.exports = {
       }),
     ],
   },
-  // mode: 'development',
-  // module: {
-  //   rules: [
-  //     {
-  //       test: /.js$/,
-  //       use: 'babel-loader',
-  //     },
-  //   ],
-  // },
-  plugins: [
-    // new webpack.HotModuleReplacementPlugin(),
-    new CleanWebpackPlugin(),
-  ],
-  // devServer: {
-  //   static: {
-  //     // static: ['assets']
-  //     directory: path.join(__dirname, 'src'),
-  //   },
-  //   hot: true,
-  // },
+  module: {
+    // 指定要加载的规则
+    rules: [{ test: /\.tsx?$/, loader: 'ts-loader' }],
+  },
+  plugins: [new CleanWebpackPlugin(), new webpack.HotModuleReplacementPlugin()],
+  devServer: {
+    hot: true,
+  },
 };
