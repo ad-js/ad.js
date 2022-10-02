@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+  <!-- react的容器 -->
+  <div id="app">
+  </div>
+</body>
+
+</html>
+<script src="../../../dist/ad.js">
+</script>
+<script type="text/babel">
+  //OH的右边的内容就是JSX的语法
+  //（script type="text/babel" 需要这么写，不然就会报错，需要告诉babel需要转哪些，只需要在script标签写type="text/babel"就可以了）
+  let oH = <div>
+    hello react!
+    <div id="ad-banner1" style="background-color: red;width:100px;height:100px;"></div>
+  </div>;
+  const ad1 = new AD.BannerAD(document.getElementById('ad-banner1'), {
+    appkey: 'app1',
+  });
+  // ReactDOM.render(要渲染什么内容，渲染到哪里)
+  //只有用了这个才会创建虚拟DOM，先创建再更新
+  ReactDOM.render(oH, document.getElementById("app"));
+</script>
+<script>
+</script>

@@ -45,15 +45,12 @@ module.exports = {
   //     },
   //   ],
   // },
-  plugins: [
-    // new webpack.HotModuleReplacementPlugin(),
-    new CleanWebpackPlugin(),
-  ],
-  // devServer: {
-  //   static: {
-  //     // static: ['assets']
-  //     directory: path.join(__dirname, 'src'),
-  //   },
-  //   hot: true,
-  // },
+  plugins: [new CleanWebpackPlugin(), new webpack.HotModuleReplacementPlugin()],
+  devServer: {
+    //   static: {
+    //     // static: ['assets']
+    //     directory: path.join(__dirname, 'src'),
+    //   },
+    hot: true,
+  },
 };

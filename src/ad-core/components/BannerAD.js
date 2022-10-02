@@ -4,8 +4,9 @@ export default class BannerAD extends AD {
   constructor(el, option) {
     super(el, {
       ...option,
-      type: 'BannerAD',
+      adtype: 'BannerAD',
       style: 'width:100%;height:100%;background:green;',
+      name: 'ldq',
     });
     this.$container.appendChild(this.$el);
     this.initAD(this.$el, this.$resource);

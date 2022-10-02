@@ -1,16 +1,18 @@
 import EVENT_LIST from '../event';
 import { applist } from '../mock';
+import BASE_CORE from './core';
 // 广告类
-export default class AD {
-  constructor(el, option) {
-    // console.log(el, option);
+export default class AD extends BASE_CORE {
+  constructor(container, option) {
+    super(container, option);
+    // console.log(container, option);
     this.$options = option;
-    this.$container = document.querySelector(el);
+    this.$container = container;
     this.$type = option.type;
     this.$el = document.createElement('div');
     this.$resource = this.fetchObj({
       appkey: 'undefined',
-      ad_type: this.$type,
+      adtype: this.$type,
       ...option,
     });
     // console.log(this.$resource);
@@ -18,12 +20,23 @@ export default class AD {
     this.initDel();
     this.initStyle(this.$el);
     this.initEvent(this.$el, this.$resource);
+    this.initRenderEvent();
   }
   // 模拟请求
-  fetchObj({ appkey, ad_type }) {
+  fetchObj({ appkey, adtype }) {
     return applist
       .find(f => f.appkey == appkey)
-      .AD_value.find(f => f.type == ad_type);
+      .AD_value.find(f => f.type == adtype);
+  }
+  // 监听渲染事件
+  initRenderEvent() {
+    // 创建实例
+    this.$mutationObserver_show = new MutationObserver(() =>
+      console.log('曝光了...', this.$el)
+    );
+    this.$mutationObserver_show.observe(this.$container, {
+      childList: true,
+    });
   }
   // 初始化事件
   initEvent(el, options) {

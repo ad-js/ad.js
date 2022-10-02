@@ -7,4 +7,8 @@ export default {
       window.open(url);
     };
   },
+  // dom渲染事件
+  render: ({}) => {
+    console.log();
+  },
 };
