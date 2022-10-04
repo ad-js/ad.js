@@ -50,7 +50,7 @@ export default class BASE_CORE {
   // 初始化DOM
   protected initDom() {
     this.$DOM.$ad = document.createElement('div');
-    this.initStyle()
+    this.initStyle();
     this.initCloseBtn();
   }
   // 初始化style

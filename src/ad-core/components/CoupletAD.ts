@@ -7,10 +7,10 @@ export default class CoupletAD extends AD {
       ...options,
       adtype: 'CoupletAD',
       style: 'position: fixed;width:10%;height:30%;',
-      name: 'dlad',
+      name: 'cpad',
     });
     this.initAD(this.$DOM.$ad, this.$resource);
-    this.appendChild(this.$DOM.$container, this.$DOM.$ad)
+    this.appendChild(this.$DOM.$container, this.$DOM.$ad);
   }
   // 初始化广告内容
   initAD($ad: any, $resource: any) {
