@@ -15,6 +15,7 @@ export const CSS_ad_close_icon = `
   background: #333;
   transform: rotate(45deg);
   margin-top:20px;
+  z-index: 1145141;
 `;
 
 export const CSS_close_btn: string = `
@@ -30,4 +31,21 @@ export const CSS_ad_close_icon_box = `
   position:absolute;
   margin-left:15px;
   right:15px;
+`;
+export const CSS_ad_close_icon_couplet = `
+  position:absolute; 
+  display: block;
+  width: 15px;
+  height: 2px;
+  background: #333;
+  transform: rotate(45deg);
+  margin-top: 50%;
+  z-index: 1145141;
+`;
+export const CSS_ad_close_icon_box_couplet = `
+  width: 20px;
+  height: 30px;
+  position: absolute;
+  margin-left: 15px;
+  right: 0;
 `;

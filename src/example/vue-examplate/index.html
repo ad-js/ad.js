@@ -35,6 +35,9 @@
       <el-container>
         <div v-if="!isPhone" id="ad-banner1" style="background-color: red;float: right; width:100%;height:100px;"></div>
         <div v-if="isPhone" id="ad-banner1" style="background-color: red;float: right; width:100vw;height:10vw;"></div>
+        <!-- <div id="ad-couplet1" style="background-color: green;left: 0;bottom: 150px;position: fixed;z-index: 114514;width: 10%;height: 30%;background: border-box;min-height: 120px;"></div>
+        <div id="ad-couplet2" style="background-color: green;right: 0;bottom: 150px;position: fixed;z-index: 114514;width: 10%;height: 30%;background: border-box;min-height: 120px;"></div> -->
+        <div id="ad-interstitial1" style="background-color: blue;position: fixed;z-index:20;top: 50%;width:100%;"></div>
         <el-header>
           <h1>自然语言翻译翻译</h1>
           <div class="titleIcon" v-if="isPhone">
@@ -150,10 +153,14 @@
 </script>
 <script>
   const banner1 = document.getElementById('ad-banner1')
-  // const banner2 = document.getElementById('ad-banner2')
+  // const couplet1 = document.getElementById('ad-couplet1')
+  // const couplet2 = document.getElementById('ad-couplet2')
+  const interstitial1 = document.getElementById('ad-interstitial1')
   const appkey = 'app1'
   new AD.BannerAD(banner1, { appkey });
-  // new AD.BannerAD(banner2, { appkey });
+  // new AD.CoupletAD(couplet1, { appkey });
+  // new AD.CoupletAD(couplet2, { appkey });
+  new AD.InterstitialAD(interstitial1, { appkey });
 </script>
 
 </html>

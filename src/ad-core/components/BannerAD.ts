@@ -9,7 +9,7 @@ export default class BannerAD extends AD {
       name: 'ldq',
     });
     this.initAD(this.$DOM.$ad, this.$resource);
-    this.appendChild(this.$DOM.$container, this.$DOM.$ad)
+    this.appendChild(this.$DOM.$container, this.$DOM.$ad);
   }
   // 初始化广告内容
   initAD($ad: any, $resource: any) {
