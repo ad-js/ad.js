@@ -1,7 +1,7 @@
 import { DOM, OPTIONS } from '../interface';
 import { applist } from "../mock";
 import EVENT_LIST from '../event';
-import { CSS_ad_close_icon, CSS_ad_close_icon_after, CSS_ad_close_icon_box } from '../style';
+import { CSS_ad_close_icon, CSS_ad_close_icon_after, CSS_ad_close_icon_box, CSS_ad_txt } from '../style';
 export default class BASE_CORE {
   constructor(container: any, options: any) {
   }
@@ -63,15 +63,21 @@ export default class BASE_CORE {
   // 初始化删除按钮
   protected initCloseBtn() {
     const delbox: HTMLElement = document.createElement('div');
+    const adtxt: HTMLElement = document.createElement('div');
+
     delbox.id = 'ad-close-icon';
+    adtxt.id = 'ad-txt';
+    adtxt.innerHTML = '广告';
     delbox.style.cssText = CSS_ad_close_icon;
+    adtxt.style.cssText = CSS_ad_txt;
 
     this.$DOM.$delIcon = document.createElement('div');
     this.$DOM.$delIcon.id = 'ad-close-icon-box';
     this.$DOM.$delIcon.style.cssText = CSS_ad_close_icon_box;
     // 插入dom
+    this.appendChild(this.$DOM.$delIcon, adtxt);
     this.appendChild(this.$DOM.$delIcon, delbox);
-    this.appendChild(this.$DOM.$container, this.$DOM.$delIcon);
+    this.appendChild(this.$DOM.$ad, this.$DOM.$delIcon);
     // 绑定close事件
     this.registerEvent(this.$DOM.$delIcon, 'click', (e: any) => this.onClose(e))
   }

@@ -13,8 +13,6 @@ export default class BannerAD extends AD {
   }
   // 初始化广告内容
   initAD($ad: any, $resource: any) {
-    console.log(this.$DOM);
-
     this.$DOM.$ad.style.backgroundImage = `url(${$resource.image})`;
     this.$DOM.$ad.style.backgroundSize = `100% 100%`;
   }
