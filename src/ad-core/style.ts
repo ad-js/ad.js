@@ -7,45 +7,38 @@ export const CSS_ad_close_icon_after: string = `
   background: #333;
   transform: rotate(-90deg);
 }`;
+
 export const CSS_ad_close_icon = `
-  position:absolute; 
+  position: absolute; 
   display: block;
   width: 15px;
   height: 2px;
   background: #333;
   transform: rotate(45deg);
-  margin-top:20px;
+  margin-top: 20px;
   z-index: 1145141;
 `;
 
 export const CSS_close_btn: string = `
-  width:20px;
-  height:30px;
-  position:absolute;
-  margin-left:15px;
-  right:15px;
-`;
-export const CSS_ad_close_icon_box = `
-  width:20px;
-  height:30px;
-  position:absolute;
-  margin-left:15px;
-  right:15px;
-`;
-export const CSS_ad_close_icon_couplet = `
-  position:absolute; 
-  display: block;
-  width: 15px;
-  height: 2px;
-  background: #333;
-  transform: rotate(45deg);
-  margin-top: 50%;
-  z-index: 1145141;
-`;
-export const CSS_ad_close_icon_box_couplet = `
   width: 20px;
   height: 30px;
   position: absolute;
   margin-left: 15px;
-  right: 0;
+  right: 15px;
+`;
+
+export const CSS_ad_close_icon_box = `
+  width: 20px;
+  height: 30px;
+  position: absolute;
+  margin-left: 15px;
+  right: 15px;
+`;
+
+export const CSS_ad_txt: string = `
+  right: 20px;
+  position: absolute;
+  writing-mode: vertical-lr;
+  top: 13px;
+  color: #333;
 `;
