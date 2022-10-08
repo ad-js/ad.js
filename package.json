@@ -1,6 +1,6 @@
 {
   "name": "adui.js",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Easy to use, beautiful, rich variety of advertising management tools. Based on native JS, it theoretically supports all front-end frameworks.",
   "main": "dist/ad.min.js",
   "files": [
