@@ -44,12 +44,19 @@ class BannerAD extends _AD__WEBPACK_IMPORTED_MODULE_0__["default"] {
     constructor(el, options) {
         super(el, Object.assign(Object.assign({}, options), { adtype: 'BannerAD', style: 'width:100%;height:100%;', name: 'ldq' }));
         this.initAD(this.$DOM.$ad, this.$resource);
-        this.appendChild(this.$DOM.$container, this.$DOM.$ad);
+        this.initboxStyle();
     }
     // 初始化广告内容
     initAD($ad, $resource) {
         this.$DOM.$ad.style.backgroundImage = `url(${$resource.image})`;
         this.$DOM.$ad.style.backgroundSize = `100% 100%`;
+    }
+    // 给容器加一个子盒子来撑开容器
+    initboxStyle() {
+        const stylebox = document.createElement('div');
+        stylebox.style.cssText = "background-color: red;float: right; width:100%;height:100px;";
+        this.appendChild(stylebox, this.$DOM.$ad);
+        this.appendChild(this.$DOM.$container, stylebox);
     }
 }
 
@@ -387,12 +394,32 @@ class CoupletAD extends _AD__WEBPACK_IMPORTED_MODULE_0__["default"] {
     constructor(el, options) {
         super(el, Object.assign(Object.assign({}, options), { adtype: 'CoupletAD', style: 'position: fixed;width:10%;height:30%;margin:auto;', name: 'coupletad' }));
         this.initAD(this.$DOM.$ad, this.$resource);
-        this.appendChild(this.$DOM.$container, this.$DOM.$ad);
+        this.initboxStyle();
     }
     // 初始化广告内容
     initAD($ad, $resource) {
         this.$DOM.$ad.style.backgroundImage = `url(${$resource.image})`;
-        this.$DOM.$ad.style.backgroundSize = `100% 100%`;
+        this.$DOM.$ad.style.backgroundSize = `repeat`;
+    }
+    // 给容器加一个子盒子来撑开容器
+    initboxStyle() {
+        // 判断是否已经有一个对联了
+        const couplet1 = document.getElementById('ad-has1');
+        if (!couplet1) {
+            const stylebox1 = document.createElement('div');
+            stylebox1.style.cssText = "background-color: green;left: 0;bottom: 150px;position: fixed;z-index: 114514;width: 10%;height: 30%;background: border-box;min-height: 120px;";
+            this.appendChild(stylebox1, this.$DOM.$ad);
+            this.appendChild(this.$DOM.$container, stylebox1);
+            const hasbox1 = document.createElement('div');
+            hasbox1.id = 'ad-has1';
+            this.appendChild(stylebox1, hasbox1);
+        }
+        else {
+            const stylebox2 = document.createElement('div');
+            stylebox2.style.cssText = "background-color: green;right: 0;bottom: 150px;position: fixed;z-index: 114514;width: 10%;height: 30%;background: border-box;min-height: 120px;";
+            this.appendChild(stylebox2, this.$DOM.$ad);
+            this.appendChild(this.$DOM.$container, stylebox2);
+        }
     }
 }
 
@@ -413,21 +440,28 @@ class InterstitialAD extends _AD__WEBPACK_IMPORTED_MODULE_0__["default"] {
         super(el, Object.assign(Object.assign({}, options), { adtype: 'InterstitialAD', style: 'width: 100%;height: 200px;z-index: 22;position: absolute;', name: 'interstitialad' }));
         this.initcover();
         this.initAD(this.$DOM.$ad, this.$resource);
-        this.appendChild(this.$DOM.$container, this.$DOM.$ad);
+        this.initboxStyle();
     }
     // 初始化广告内容
     initAD($ad, $resource) {
         this.$DOM.$ad.style.backgroundImage = `url(${$resource.image})`;
-        this.$DOM.$ad.style.backgroundSize = `100% 100%`;
+        this.$DOM.$ad.style.backgroundSize = `repeat`;
     }
     // 创建蒙版
     initcover() {
         // console.log(this.$DOM.$ad);
         const ad = document.createElement('div');
-        let html1 = `<div id='cover' style="width: 100%;position: fixed;z-index: -1;height: 100%;background: rgba(0,0,0,0.4);top: 0;left: 0;"></div>`;
+        let html1 = `<div id='cover' style="width: 100%;position: fixed;z-index: 114514;height: 100%;background: rgba(0,0,0,0.4);top: 0;left: 0;"></div>`;
         ad.innerHTML = html1;
         //在$container后面加上子节点ad
         this.$DOM.$container.appendChild(ad);
+    }
+    // 给容器加一个子盒子来撑开容器
+    initboxStyle() {
+        const stylebox = document.createElement('div');
+        stylebox.style.cssText = "background-color: blue;position: fixed;z-index:11451419;top: 50%;width:100%;";
+        this.appendChild(stylebox, this.$DOM.$ad);
+        this.appendChild(this.$DOM.$container, stylebox);
     }
 }
 
@@ -473,8 +507,13 @@ class RollupAD extends _AD__WEBPACK_IMPORTED_MODULE_0__["default"] {
             }
             isroll = !isroll;
         });
-        this.appendChild(this.$DOM.$container, rollbtn);
-        this.appendChild(this.$DOM.$container, this.$DOM.$ad);
+        // 给容器加一个子盒子来撑开容器
+        const stylebox = document.createElement('div');
+        stylebox.style.cssText = "position:fixed;width:100%;height:100px;bottom: 0;z-index: 2;";
+        this.appendChild(stylebox, this.$DOM.$ad);
+        this.appendChild(this.$DOM.$container, stylebox);
+        this.appendChild(stylebox, rollbtn);
+        this.appendChild(stylebox, this.$DOM.$ad);
     }
 }
 
@@ -553,7 +592,7 @@ class RollupAD extends _AD__WEBPACK_IMPORTED_MODULE_0__["default"] {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("ef3122af94263be376fb")
+/******/ 		__webpack_require__.h = () => ("e82ce503ceda4a1ed0c8")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
