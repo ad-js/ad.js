@@ -9,11 +9,18 @@ export default class BannerAD extends AD {
       name: 'ldq',
     });
     this.initAD(this.$DOM.$ad, this.$resource);
-    this.appendChild(this.$DOM.$container, this.$DOM.$ad);
+    this.initboxStyle();
   }
   // 初始化广告内容
   initAD($ad: any, $resource: any) {
     this.$DOM.$ad.style.backgroundImage = `url(${$resource.image})`;
     this.$DOM.$ad.style.backgroundSize = `100% 100%`;
+  }
+  // 给容器加一个子盒子来撑开容器
+  initboxStyle() {
+    const stylebox: HTMLElement = document.createElement('div');
+    stylebox.style.cssText = "background-color: red;float: right; width:100%;height:100px;";
+    this.appendChild(stylebox, this.$DOM.$ad);
+    this.appendChild(this.$DOM.$container, stylebox);
   }
 }

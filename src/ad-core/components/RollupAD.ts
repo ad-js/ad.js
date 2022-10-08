@@ -38,7 +38,13 @@ export default class RollupAD extends AD {
       isroll = !isroll;
     })
 
-    this.appendChild(this.$DOM.$container, rollbtn);
-    this.appendChild(this.$DOM.$container, this.$DOM.$ad);
+    // 给容器加一个子盒子来撑开容器
+    const stylebox: HTMLElement = document.createElement('div');
+    stylebox.style.cssText = "position:fixed;width:100%;height:100px;bottom: 0;z-index: 2;";
+    this.appendChild(stylebox, this.$DOM.$ad);
+    this.appendChild(this.$DOM.$container, stylebox);
+    this.appendChild(stylebox, rollbtn);
+    this.appendChild(stylebox, this.$DOM.$ad);
+
   }
 }
